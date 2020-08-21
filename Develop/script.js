@@ -7,14 +7,30 @@ const timeBlockTemp = `
 </div>`;
 let currentDay = document.querySelector("#currentDay");
 // Creating an array to store the hours of the day
-const hoursOfDay = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
+const hoursOfDay = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 $(document).ready(function () {
-    // Establishing the current time and date on the top
+    // Establishing the current time and date on the top as well as appending class names to the text area.
     function date() {
         setInterval(function() {
-            let currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+            let now = moment();
+            let currentDate = now.format('MMMM Do YYYY, h:mm:ss a');
             currentDay.textContent = currentDate
+            let index = 0;
+            $(".hour").each(function() {
+                let momForm = moment();
+                momForm.hours(hoursOfDay[index]);
+                momForm.minutes(0);
+                if (momForm.hours() < now.hours()) {
+                    $(this).parent().find(".time-block").addClass("past")
+                } else if (momForm.hours() === now.hours()) {
+                    $(this).parent().find(".time-block").addClass("present");
+                } else {
+                    $(this).parent().find(".time-block").addClass("future")
+                }
+                index++;
+            });
+
         }, 1000);
     }
     date();
@@ -26,18 +42,20 @@ $(document).ready(function () {
     // appending the hours of the day to hour block and calling local storage to place what has been already saved.
     let index = 0;
     $(".hour").each(function() {
-        $(this).text(hoursOfDay[index]);
-        let todoHour = localStorage.getItem(hoursOfDay[index]);
+        let momForm = moment();
+        momForm.hours(hoursOfDay[index]);
+        momForm.minutes(0);
+        $(this).text(momForm.format("h:mm A"));
+        let todoHour = localStorage.getItem(momForm.format("h:mm A"));
         $(this).parent().find(".time-block").val(todoHour);
-        index = index + 1
+        index++;
     });
     // save button
     $(".saveBtn").on("click", function() {
         let value = $(this).parent().parent().find(".time-block").val();
         let hourBlock = $(this).parent().parent().find(".hour").text();
-        // debugger;
         localStorage.setItem(hourBlock, value);
         console.log(value, hourBlock);
-    })
+    });
 
 });
