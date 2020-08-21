@@ -1,7 +1,7 @@
 const timeBlockTemp = `
 <div class="row">
     <div class="col-md-2 hour">12:00AM</div>
-    <div class="time-block col-md-8"><textarea class="time-block"></textarea>
+    <div class="col-md-8"><textarea class="time-block"></textarea>
     </div>
     <div class="col-md-2"><button class="saveBtn"></button> </div>
 </div>`;
@@ -23,20 +23,19 @@ $(document).ready(function () {
         const foo = $($.parseHTML(timeBlockTemp));
         $('#timeBlockCont').append(foo);
     };
-    // Creating an onclick listener for each of the time blocks
-    // $(".time-block").on("click", function() {
-    //     console.log("My Old Friend")
-    // });
-    // For each loop for time blocks
+    // appending the hours of the day to hour block and calling local storage to place what has been already saved.
     let index = 0;
     $(".hour").each(function() {
         $(this).text(hoursOfDay[index]);
+        let todoHour = localStorage.getItem(hoursOfDay[index]);
+        $(this).parent().find(".time-block").val(todoHour);
         index = index + 1
     });
     // save button
     $(".saveBtn").on("click", function() {
-        let value = $(this).closest(".time-block").val();
-        let hourBlock = $(this).siblings(".hour").val();
+        let value = $(this).parent().parent().find(".time-block").val();
+        let hourBlock = $(this).parent().parent().find(".hour").text();
+        // debugger;
         localStorage.setItem(hourBlock, value);
         console.log(value, hourBlock);
     })
