@@ -55,7 +55,6 @@ $(document).ready(function () {
         let value = $(this).parent().parent().find(".time-block").val();
         let hourBlock = $(this).parent().parent().find(".hour").text();
         localStorage.setItem(hourBlock, value);
-        console.log(value, hourBlock);
     });
 
 });
