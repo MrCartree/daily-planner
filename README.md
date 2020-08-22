@@ -1,46 +1,9 @@
-# 05 Third-Party APIs: Work Day Scheduler
+# Daily Planner ![Top Language badge](https://img.shields.io/github/languages/top/MrCartree/daily-planner)
 
-Create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+Daily Planner is a tool that was created to help keep track of different items that either need to get done that day or even meetings that will be had. It follows the generic work day time of 9:00 AM to 5:00 PM. You can type something into the text block and click the save button to attatch that specific text to the local storage so you can refresh and keep your list together and in order. To clear out the text areas all you need to do is to delete the text and click the save button again.
 
-You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
+![Daily Planner Snapshot](./Assets/screenshot.PNG)
 
-## User Story
+This is deployed [here](https://mrcartree.github.io/daily-planner/)
 
-```
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-```
-
-## Acceptance Criteria
-
-```
-GIVEN I am using a daily planner to create a schedule
-WHEN I open the planner
-THEN the current day is displayed at the top of the calendar
-WHEN I scroll down
-THEN I am presented with timeblocks for standard business hours
-WHEN I view the timeblocks for that day
-THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-WHEN I click into a timeblock
-THEN I can enter an event
-WHEN I click the save button for that timeblock
-THEN the text for that event is saved in local storage
-WHEN I refresh the page
-THEN the saved events persist
-```
-
-The following animation demonstrates the application functionality:
-
-![day planner demo](./Assets/05-third-party-apis-homework-demo.gif)
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+Authored by [Zach LaFleur](http://github.com/MrCartree)
