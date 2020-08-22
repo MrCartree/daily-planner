@@ -3,7 +3,7 @@ const timeBlockTemp = `
     <div class="col-md-2 hour">12:00AM</div>
     <div class="col-md-8"><textarea class="time-block"></textarea>
     </div>
-    <div class="col-md-2"><button class="saveBtn"></button> </div>
+    <div class="col-md-2"><button class="saveBtn">Save/Clear</button></div>
 </div>`;
 let currentDay = document.querySelector("#currentDay");
 // Creating an array to store the hours of the day
